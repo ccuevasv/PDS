@@ -1,0 +1,292 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>PDS</title>
+  <meta name="description" content="Sistema de registro de actividades para empleados de NIC Mexico.">
+  <meta name="author" content="Christian Cuevas / Enrique Cavazos">
+
+  <!-- SlidesJS Required (if responsive): Sets the page width to the device width. -->
+  <meta name="viewport" content="width=device-width">
+  <!-- End SlidesJS Required -->
+
+  <!-- links a plugins -->
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/font-awesome.min.css">
+  <script src="js/bootstrap-modal.js"></script>
+  <script src="js/jquery-1.11.2.min.js"></script>
+  <style>
+  </style>
+  
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-md-3">
+				<img src="img/nic.png">
+			</div>
+			<div class="col-md-9">
+				<p class="text-right"> 
+					Usuario: <u>Regino Soto</u></br>
+					Departamento: <u>Proyectos </u></br>
+					<button type="button" class="btn btn-primary" data-toggle="modal" href="#nuevaActividad">Nueva Actividad</button>
+					<button type="button" class="btn btn-primary" data-toggle="modal" href="#crearUsuario">Crear Usuario</button>
+					<a class="btn btn-primary" href="data.html" role="button" >Estadistica</a>
+					
+				</p>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<h2> Actividades </h2>
+				<table class="table table-hover table-striped">
+					<thead>
+						<tr>
+							<th>Fecha</th>
+							<th>Codigo</th>
+							<th>Actividad</th>
+							<th>Hora Inicio</th>
+							<th>Hora Fin</th>
+							<th>Avance</th>
+							<th>Notas</th>
+							<th></th>
+							<th></th>
+						</tr>
+					<thead>
+					<tbody>
+						<tr>
+							<td>2015-01-26</td>
+							<td>5-cret</td>
+							<td>Coordinacion retencion</td>
+							<td>08:40</td>
+							<td>16:00</td>
+							<td>60%</td>
+							<td></td>
+							<td><button type="button" class="btn btn-info">Pausar</button></td>
+							<td><button type="button" class="btn btn-primary">Terminar</button></td>
+						</tr>
+						<tr>
+							<td>2015-01-29</td>
+							<td>5-jn</td>
+							<td>Juntas Nic</td>
+							<td>10:30o</td>
+							<td>13:30</td>
+							<td>100%</td>
+							<td>Se platico sobre servicio</td>
+							<td><button type="button" class="btn btn-info">Pausar</button></td>
+							<td><button type="button" class="btn btn-primary">Terminar</button></td>
+						</tr>
+					</tbody>
+				</table>
+				<p class="text-center">
+					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" href="#agregarActividad" >Agregar Actividad</button>
+				</p>
+			</div>
+		</div>
+		<div class="modal fade" id="agregarActividad">
+			<div class="modal-dialog" >
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Actividades</h4>
+					</div>
+					<div class="modal-body">
+						<table class="table table-striped table-hover" id="tblGrid">
+							<thead id="tblHead">
+								<tr>
+									<th>Actividad</th>
+									<th>Tipo</th>
+									<th>Unidad de Negocio</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Reportes Extranet</td>
+									<td>Desasrrollo</td>
+									<td>Certipass</td>
+								</tr>
+								<tr>
+									<td>Junta de Equipo</td>
+									<td>Junta</td>
+									<td>Azenta</td>
+								</tr>
+								<tr>
+									<td>Cancelación Pruebas</td>
+									<td>Pruebas</td>
+									<td>Certipass</td>
+								</tr>
+							</tbody>
+						</table>
+						<form>
+							<div class="form-group">
+								<label for="recipient-name" class="control-label">Actividad No Planeada:</label>
+								<input type="text" class="form-control" id="recipient-name">
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary">Agregar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="nuevaActividad">
+			<div class="modal-dialog" >
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Nueva Actividad</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="nuevaCodigo" class="col-sm-2 control-label">Codigo</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="nuevaCodigo" placeholder="Codigo">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nuevaActividad" class="col-sm-2 control-label">Actividad</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="nuevaActividad" placeholder="Actividad">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nuevaTipo" class="col-sm-2 control-label">Tipo:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="nuevaTipo">
+											<option>Desarrollo</option>
+											<option>Juntas</option>
+											<option>Capacitacion</option>
+											<option>Analisis</option>
+											<option>#N/A</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nuevaUnidadNegocio" class="col-sm-2 control-label">Unidad Negocio:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="nuevaUnidadNegocio">
+											<option>Certipass</option>
+											<option>Nic Mx</option>
+											<option>Azenta</option>
+											<option>#N/A</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nuevaDificultad" class="col-sm-2 control-label">Dificultad:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="nuevaDificultad">
+											<option>Facil</option>
+											<option>Media</option>
+											<option>Dificil</option>
+											<option>#N/A</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="nuevaHorasPlaneadas" class="col-sm-2 control-label">Horas Planeadas</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="nuevaHorasPlaneadas" placeholder="Horas Planeadas">
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary">Agregar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal fade" id="crearUsuario">
+			<div class="modal-dialog" >
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+						<h4 class="modal-title">Nueva Actividad</h4>
+					</div>
+					<div class="modal-body">
+						<form>
+							<div class="form-horizontal">
+								<div class="form-group">
+									<label for="usuarioId" class="col-sm-2 control-label">Id</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="usuarioId" placeholder="Id">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="usuarioNombre" class="col-sm-2 control-label">Nombre</label>
+									<div class="col-sm-10">
+										<input type="text" class="form-control" id="usuarioNombre" placeholder="Nombre">
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="usuarioRol" class="col-sm-2 control-label">Rol:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="usuarioRol">
+											<option>Desarrollador</option>
+											<option>Coordinador</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="usuarioCoordinador" class="col-sm-2 control-label">Coordinador:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="usuarioCoordinador">
+											<option>Jonathan Lobo</option>
+											<option>Manuel Godoy</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="usuarioGerente" class="col-sm-2 control-label">Gerente:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="usuarioCoordinador">
+											<option>Juan Carlos Gomez</option>
+										</select>
+									</div>
+								</div>
+								<div class="form-group">
+									<label for="usuarioArea" class="col-sm-2 control-label">Area:</label>
+									<div class="col-sm-10">
+										<select class="form-control" id="usuarioArea">
+											<option>Proyectos</option>
+											<option>Operación</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+						<button type="button" class="btn btn-primary">Agregar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="jquery-1.11.2.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$("body").css("display", "none");
+			$("body").fadeIn(150);
+			$("a").click(function(event){
+				event.preventDefault();
+				linkLocation = this.href;
+				$("body").fadeOut(150, redirectPage);     
+			});
+			function redirectPage() {
+				window.location = linkLocation;
+			}
+		});
+	</script>
+	
+</body>
+</html>
