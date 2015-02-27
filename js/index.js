@@ -1,8 +1,12 @@
 var actCount = 1;
 $(function(){
+	
+$.fn.editable.defaults.mode = 'inline';
+    //$('#note-1').editable();
 	$('[data-toggle="popover"]').popover()
 	var actNum = 1;
-	
+	var initialMin = 0;
+	var initialHours = 0;
 	var newAct = $('.tr-act').html();
 	$('.tr-act').remove();
 
@@ -11,10 +15,14 @@ $(function(){
 		$('tr.clicked').toggleClass("clicked");
 
 	    $('.tbody-act').append("<tr>"+newAct.replace(/1/g,actCount)+"</tr>");
-
+		$('#note-'+actCount).editable({
+			emptytext: '+',			
+		});
 		$('#fechaAct-'+actCount).text(getCurrentDate());
-	    $('#horaInAct-'+actCount).text(getTime()); 
+		initialTime = getTime();
+	    $('#horaInAct-'+actCount).text(initialTime); 
 	    $('#tipoAct-'+actCount).text($('#planAct-'+actNum).text());
+		$('#codeAct-'+actCount).text($('#codAct-'+actNum).text());
 	    
 	    actCount++;
 	});
@@ -32,9 +40,16 @@ $(function(){
 		var actNo = actCount-1;
 		
 		if ( id == btnTer + actNo){
-			$('#avance-'+actNo).text('100%');
+			var endTime = new Date();
+			var finalMin = endTime.getMinutes() - initialMin;
+			var finalHours = endTime.getHours() - initialHours;
+			
+		
+			console.log("finalmin"+finalMin+"im"+initialMin+"finalHours"+finalHours+"initialHours"+initialHours);
+			$('#avance-'+actNo).text(finalHours+":"+finalMin);
 			$('#horaFinAct-'+actNo).text(getTime());
 		}
+		
 	
 	});
 	
@@ -48,6 +63,14 @@ $(function(){
 		var dt = new Date();
 		var mins = ("0"+dt.getMinutes()).slice(-2)
 	    var time = dt.getHours()+":"+mins;
+		initialMin = dt.getMinutes();
+		initialHours = dt.getHours();
 		return time;
 	}
 });
+
+ 
+
+
+
+
