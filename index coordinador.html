@@ -12,10 +12,13 @@
 
   <!-- links a plugins -->
   <link rel="stylesheet" href="css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/example.css">
+  <link rel="stylesheet" href="css/pds.css">
+  <link rel="stylesheet" href="css/bootstrap-editable.css">
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <script src="js/bootstrap-modal.js"></script>
   <script src="js/jquery-1.11.2.min.js"></script>
+  <script src="js/bootstrap-editable.js"></script>
+  <script src="js/index.js"></script>
   <style>
   </style>
   
@@ -45,35 +48,38 @@
 							<th>Actividad</th>
 							<th>Hora Inicio</th>
 							<th>Hora Fin</th>
-							<th>Avance</th>
+							<th>Horas usadas</th>
 							<th>Notas</th>
 							<th></th>
 							<th></th>
 						</tr>
 					<thead>
-					<tbody>
+					<tbody class="tbody-act">
 						<tr>
 							<td>2015-01-29</td>
-							<td>67RT</td>
-							<td>desarrollo</td>
-							<td>12:00</td>
-							<td>15:00</td>
-							<td>12%</td>
-							<td>complicado desarrollo</td>
-							<td><button type="button" class="btn btn-info">Pausar</button></td>
-							<td><button type="button" class="btn btn-primary">Terminar</button></td>
-						</tr>
-						<tr>
-							<td>2015-01-29</td>
-							<td>78SD</td>
-							<td>testing pruebas</td>
-							<td>12:00</td>
+							<td>53DR</td>
+							<td>pruebas</td>
 							<td>14:00</td>
-							<td>18%</td>
-							<td></td>
+							<td>18:30</td>
+							<td>87%</td>
+							<td><a href="#" id="note-451" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click editable-open" title=""></a></td>
 							<td><button type="button" class="btn btn-info">Pausar</button></td>
 							<td><button type="button" class="btn btn-primary">Terminar</button></td>
 						</tr>
+						<tr class="tr-act">
+							<td id="fechaAct-1"></td>
+							<td id="codeAct-1"></td>
+							<td id="tipoAct-1"></td>
+							<td id="horaInAct-1"></td>
+							<td id="horaFinAct-1"></td>
+							<td id="avance-1"></td>
+							<td id="nota-1" maxlength="20"><a href="#"   id="note-1" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click editable-open" title=" "></a></td>
+							<td id="pausar-1"><button class="btn btn-info">Pausar</button></td>
+							<td id="terminar-1"><button id="btn-terminar-1" class="btn btn-primary">Terminar</button></td>
+
+						</tr>
+						
+						
 					</tbody>
 				</table>
 				<p class="text-center">
@@ -98,18 +104,18 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr>
-									<td>Reportes Extranet</td>
+								<tr id="tr-1" >
+									<td id="planAct-1">Reportes Extranet</td>
 									<td>Desasrrollo</td>
 									<td>Certipass</td>
 								</tr>
-								<tr>
-									<td>Junta de Equipo</td>
+								<tr id="tr-2">
+									<td id="planAct-2">Junta de Equipo</td>
 									<td>Junta</td>
 									<td>Azenta</td>
 								</tr>
-								<tr>
-									<td>Cancelación Pruebas</td>
+								<tr id="tr-3">
+									<td id="planAct-3">Cancelación Pruebas</td>
 									<td>Pruebas</td>
 									<td>Certipass</td>
 								</tr>
@@ -124,7 +130,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary">Agregar</button>
+						<button id="addActButton" type="button" class="btn btn-primary">Agregar</button>
 					</div>
 				</div>
 			</div>
