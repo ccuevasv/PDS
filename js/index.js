@@ -1,4 +1,8 @@
 var actCount = 1;
+var actPlanCount = 1;
+var planRow = [];
+var planDesc = ["#planAct-","#planTipo-","#planUni-","#planDif-","#planHoras-"];
+var planIn = ["#planInAct-","#planInTipo-","#planInUni-","#planInDif-","#planInHoras-"];
 $(function(){
 	
 $.fn.editable.defaults.mode = 'inline';
@@ -9,8 +13,12 @@ $.fn.editable.defaults.mode = 'inline';
 	var initialHours = 0;
 	var newAct = $('.tr-act').html();
 	$('.tr-act').remove();
-
+	var newActPlan = $('#tr-ActPlan').html();
+	$('#tr-ActPlan').remove();
+	
+	//Agregar actividad desde index
 	$('#addActButton').on('click', function () {
+
 		$("#agregarActividad").modal("hide");    
 		$('tr.clicked').toggleClass("clicked");
 
@@ -21,12 +29,35 @@ $.fn.editable.defaults.mode = 'inline';
 		$('#fechaAct-'+actCount).text(getCurrentDate());
 		initialTime = getTime();
 	    $('#horaInAct-'+actCount).text(initialTime); 
-	    $('#tipoAct-'+actCount).text($('#planAct-'+actNum).text());
-		$('#codeAct-'+actCount).text($('#codAct-'+actNum).text());
 	    
+		
+		
+		if($('#recipient-name').val() != ""){
+			$('#tipoAct-'+actCount).text($('#recipient-name').val());			
+			$('#recipient-name').val("");
+		}else{
+			$('#tipoAct-'+actCount).text($('#planAct-'+actNum).text());
+		}
+		
 	    actCount++;
 	});
+	//Agregar Nueva actividad desde coordinador
+	$('#addNewActButton').on('click', function () {
 
+		$("#nuevaActividad").modal("hide");    
+		
+	    $('.tbody-actpp').append('<tr id="tr-'+actPlanCount+'">'+newActPlan.replace(/1/g,actPlanCount)+"</tr>");
+		$('.tbody-ActPlan').append('<tr id="tr-'+actPlanCount+'">'+newActPlan.replace(/1/g,actPlanCount)+"</tr>");
+		
+		  planRow[0] = $('#nuevaActividadPlan').val();
+		  planRow[1]  = $('#nuevaTipo').val();
+		  planRow[2]  = $('#nuevaUnidadNegocio').val();
+		  planRow[3]  = $('#nuevaDificultad').val();
+		  planRow[4]  = $('#nuevaHorasPlan').val();
+		
+	    actPlanCount++;
+	});
+	
 	$('#tblGrid').on('click','tr', function () {
 		var trId = $(this).attr('id');
 		actNum = trId.slice(-1);
@@ -48,6 +79,18 @@ $.fn.editable.defaults.mode = 'inline';
 			console.log("finalmin"+finalMin+"im"+initialMin+"finalHours"+finalHours+"initialHours"+initialHours);
 			$('#avance-'+actNo).text(finalHours+":"+finalMin);
 			$('#horaFinAct-'+actNo).text(getTime());
+		}
+		
+		if( (id == "addActModal") || (id == "addActIndModal")){
+		console.log("holi"+actPlanCount);
+		var num = actPlanCount-1;
+		var i;
+			for(i=0;i<5;i++){
+				$(planDesc[i]+num).text(planRow[i]);
+				$(planIn[i]+num).text(planRow[i]);
+			console.log(planIn[i]+num);
+			}
+						
 		}
 		
 	
