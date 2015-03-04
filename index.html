@@ -43,7 +43,6 @@
 					<thead>
 						<tr>
 							<th>Fecha</th>
-							<th>Codigo</th>
 							<th>Actividad</th>
 							<th>Hora Inicio</th>
 							<th>Hora Fin</th>
@@ -54,25 +53,14 @@
 						</tr>
 					<thead>
 					<tbody class="tbody-act">
-						<tr>
-							<td>2015-01-29</td>
-							<td>53DR</td>
-							<td>pruebas</td>
-							<td>14:00</td>
-							<td>18:30</td>
-							<td>87%</td>
-							<td><a href="#" id="note-451" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click editable-open" title=""></a></td>
-							<td><button type="button" class="btn btn-info">Pausar</button></td>
-							<td><button type="button" class="btn btn-primary">Terminar</button></td>
-						</tr>
+						
 						<tr class="tr-act">
 							<td id="fechaAct-1"></td>
-							<td id="codeAct-1"></td>
 							<td id="tipoAct-1"></td>
 							<td id="horaInAct-1"></td>
 							<td id="horaFinAct-1"></td>
 							<td id="avance-1"></td>
-							<td id="nota-1" maxlength="20"><a href="#"   id="note-1" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click editable-open" title=" "></a></td>
+							<td id="nota-1" ><a href="#"   id="note-1" data-type="text" data-pk="1" data-title="Enter username" class="editable editable-click editable-open" title=" "></a></td>
 							<td id="pausar-1"><button class="btn btn-info">Pausar</button></td>
 							<td id="terminar-1"><button id="btn-terminar-1" class="btn btn-primary">Terminar</button></td>
 
@@ -82,7 +70,7 @@
 					</tbody>
 				</table>
 				<p class="text-center">
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" href="#agregarActividad" >Agregar Actividad</button>
+					<button id="addActIndModal" type="button" class="btn btn-primary btn-lg" data-toggle="modal" href="#agregarActividad" >Agregar Actividad</button>
 				</p>
 			</div>
 		</div>
@@ -97,7 +85,6 @@
 						<table class="table table-striped table-hover" id="tblGrid">
 							<thead id="tblHead">
 								<tr>
-									<th>C&oacute;digo</th>
 									<th>Actividad</th>
 									<th>Tipo</th>
 									<th>Unidad de Negocio</th>
@@ -105,17 +92,15 @@
 									<th>Horas Planeadas</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr id="tr-1" >
-									<td id="codAct-1">CQ-R</td>
-									<td id="planAct-1">Reportes Extranet</td>
-									<td>Desasrrollo</td>
-									<td>Certipass</td>
-									<td>media</td>
-									<td>6</td>
+							<tbody class="tbody-ActPlan">
+								<tr id="tr-ActPlan">
+									<td id="planInAct-1"></td>
+									<td id="planInTipo-1"></td>
+									<td id="planInUni-1"></td>
+									<td id="planInDif-1"></td>
+									<td id="planInHoras-1"></td>
 								</tr>
 								<tr id="tr-2">
-									<td id="codAct-2">CQ-R2</td>
 									<td id="planAct-2">Junta de Equipo</td>
 									<td>Junta</td>
 									<td>Azenta</td>
@@ -123,7 +108,6 @@
 									<td>5:20</td>
 								</tr>
 								<tr id="tr-3">
-									<td id="codAct-3">CQ-R3</td>
 									<td id="planAct-3">Cancelación Pruebas</td>
 									<td>Pruebas</td>
 									<td>Certipass</td>
