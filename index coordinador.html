@@ -19,6 +19,8 @@
   <script src="js/jquery-1.11.2.min.js"></script>
   <script src="js/bootstrap-editable.js"></script>
   <script src="js/index.js"></script>
+  <script type='text/javascript' src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+
   <style>
   </style>
   
@@ -44,7 +46,6 @@
 					<thead>
 						<tr>
 							<th>Fecha</th>
-							<th>Codigo</th>
 							<th>Actividad</th>
 							<th>Hora Inicio</th>
 							<th>Hora Fin</th>
@@ -57,7 +58,6 @@
 					<tbody class="tbody-act">
 						<tr>
 							<td>2015-01-29</td>
-							<td>53DR</td>
 							<td>pruebas</td>
 							<td>14:00</td>
 							<td>18:30</td>
@@ -68,7 +68,6 @@
 						</tr>
 						<tr class="tr-act">
 							<td id="fechaAct-1"></td>
-							<td id="codeAct-1"></td>
 							<td id="tipoAct-1"></td>
 							<td id="horaInAct-1"></td>
 							<td id="horaFinAct-1"></td>
@@ -83,7 +82,7 @@
 					</tbody>
 				</table>
 				<p class="text-center">
-					<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" href="#agregarActividad" >Agregar Actividad</button>
+					<button id="addActModal" type="button" class="btn btn-primary btn-lg" data-toggle="modal" href="#agregarActividad" >Agregar Actividad</button>
 				</p>
 			</div>
 		</div>
@@ -101,24 +100,19 @@
 									<th>Actividad</th>
 									<th>Tipo</th>
 									<th>Unidad de Negocio</th>
+									<th>Dificultad</th>
+									<th>Horas Planeadas</th>
 								</tr>
 							</thead>
-							<tbody>
-								<tr id="tr-1" >
-									<td id="planAct-1">Reportes Extranet</td>
-									<td>Desasrrollo</td>
-									<td>Certipass</td>
-								</tr>
-								<tr id="tr-2">
-									<td id="planAct-2">Junta de Equipo</td>
-									<td>Junta</td>
-									<td>Azenta</td>
-								</tr>
-								<tr id="tr-3">
-									<td id="planAct-3">Cancelación Pruebas</td>
-									<td>Pruebas</td>
-									<td>Certipass</td>
-								</tr>
+							<tbody class="tbody-actpp">
+							<tr id="tr-ActPlan">
+									<td id="planAct-1"></td>
+									<td id="planTipo-1"></td>
+									<td id="planUni-1"></td>
+									<td id="planDif-1"></td>
+									<td id="planHoras-1"></td>
+							</tr>
+								
 							</tbody>
 						</table>
 						<form>
@@ -146,15 +140,21 @@
 						<form>
 							<div class="form-horizontal">
 								<div class="form-group">
-									<label for="nuevaCodigo" class="col-sm-2 control-label">Codigo</label>
+									<label for="nuevoUsuario" class="col-sm-2 control-label">Usuario:</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="nuevaCodigo" placeholder="Codigo">
+										<select class="form-control" id="nuevoUsuario">
+											<option>enunez</option>
+											<option>rsoto</option>
+											<option>edeleon</option>
+											<option>jcordero</option>
+											<option>#N/A</option>
+										</select>
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="nuevaActividad" class="col-sm-2 control-label">Actividad</label>
+									<label for="nuevaActividadPlan" class="col-sm-2 control-label">Actividad</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="nuevaActividad" placeholder="Actividad">
+										<input type="text" class="form-control" id="nuevaActividadPlan" placeholder="Actividad">
 									</div>
 								</div>
 								<div class="form-group">
@@ -192,9 +192,9 @@
 									</div>
 								</div>
 								<div class="form-group">
-									<label for="nuevaHorasPlaneadas" class="col-sm-2 control-label">Horas Planeadas</label>
+									<label for="nuevaHorasPlan" class="col-sm-2 control-label">Horas Planeadas</label>
 									<div class="col-sm-10">
-										<input type="text" class="form-control" id="nuevaHorasPlaneadas" placeholder="Horas Planeadas">
+										<input type="text" class="form-control" id="nuevaHorasPlan" placeholder="Horas Planeadas">
 									</div>
 								</div>
 							</div>
@@ -202,7 +202,7 @@
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
-						<button type="button" class="btn btn-primary">Agregar</button>
+						<button id="addNewActButton" type="button" class="btn btn-primary">Agregar</button>
 					</div>
 				</div>
 			</div>
